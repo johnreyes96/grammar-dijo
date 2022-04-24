@@ -1,2 +1,2 @@
-# compiler-dijo
+# compiler DiJo
 Compiler of a fictitious language (DiJo).
