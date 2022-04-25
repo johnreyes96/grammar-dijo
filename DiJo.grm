@@ -1,0 +1,27 @@
+"Name"    = 'LALR(1) DiJo nonunicode grammar'
+"Version" = '1.0'
+"Author"  = 'Diana Samboni & John Reyes'
+"About"   = 'This is DiJo nonunicode grammar'
+
+{Point}                 = '.'
+{String Char}           = {Printable} - ["]
+{FloatTypeSuffix}       = [dfDF]
+
+StringLiteral           = '"'{String Char}*'"'
+IntegerLiteral          = {Digit}+
+FloatingPointLiteral    = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
+BooleanLiteral          = 'true' | 'false'
+NullLiteral             = 'null'
+
+"Case Sensitive"        = 'True'
+"Start Symbol"          = <CompilationUnit>
+
+Comment Start           = '/*'
+Comment End             = '*/'
+Comment Line            = '//'
+
+<Literal>               ::= StringLiteral
+                         |  IntegerLiteral
+                         |  FloatingPointLiteral
+                         |  BooleanLiteral
+                         |  NullLiteral
