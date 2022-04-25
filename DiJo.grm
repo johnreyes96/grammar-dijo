@@ -14,7 +14,6 @@ BooleanLiteral          = 'true' | 'false'
 NullLiteral             = 'null'
 
 "Case Sensitive"        = 'True'
-"Start Symbol"          = <CompilationUnit>
 
 Comment Start           = '/*'
 Comment End             = '*/'
