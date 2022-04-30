@@ -56,3 +56,6 @@ Comment Line                            = '//'
                                          |  'int'
                                          |  'long'
                                          |  'char'
+
+<FloatingPointType>                     ::= 'float'
+                                         |  'double'
