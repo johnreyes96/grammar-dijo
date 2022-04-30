@@ -26,6 +26,7 @@ StartWithZeroDecimalIntegerLiteral      = '0'{LongTypeSuffix}?
 StartWithNoZeroDecimalIntegerLiteral    = {NoZeroDigit}{Digit}*{LongTypeSuffix}?
 
 "Case Sensitive"                        = 'True'
+"Start Symbol"   = <CompilationUnit>
 
 Comment Start                           = '/*'
 Comment End                             = '*/'
