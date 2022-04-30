@@ -100,3 +100,14 @@ Comment Line                            = '//'
 
 <CompilationUnit>                       ::= <ImportDeclaration>
                                          |  
+
+<Modifier>                              ::= 'public'
+                                         |  'protected'
+                                         |  'private'
+                                         |  'static'
+                                         |  'abstract'
+                                         |  'final'
+                                         |  'async'
+
+<Modifiers>                             ::= <Modifier>
+                                         |  <Modifiers> <Modifier>
