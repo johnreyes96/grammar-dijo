@@ -50,3 +50,9 @@ Comment Line                            = '//'
                                          |  <CharacterLiteral>
                                          |  <IntegerLiteral>
                                          |  <FloatPointLiteral>
+
+<IntegralType>                          ::= 'byte'
+                                         |  'short'
+                                         |  'int'
+                                         |  'long'
+                                         |  'char'
