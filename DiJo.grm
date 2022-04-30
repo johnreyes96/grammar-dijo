@@ -88,3 +88,6 @@ Comment Line                            = '//'
 
 <ReferenceType>                         ::= <ClassOrInterfaceType>
                                          |  <ArrayType>
+
+<Type>                                  ::= <PrimitiveType>
+                                         |  <ReferenceType>
