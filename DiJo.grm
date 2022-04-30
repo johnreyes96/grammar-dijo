@@ -3,24 +3,32 @@
 "Author"  = 'Diana Samboni & John Reyes'
 "About"   = 'This is DiJo nonunicode grammar'
 
-{Point}                 = '.'
-{String Char}           = {Printable} - ["]
-{FloatTypeSuffix}       = [dfDF]
+{Point}                     = '.'
+{Quote}                     = ['']
+{String Char}               = {Printable} - ["]
+{FloatTypeSuffix}           = [dfDF]
+{CharSignEscapeSequence}    = [bfnrt\"] + {Quote}
+{CharSign}                  = {String Char} - [\]
 
-StringLiteral           = '"'{String Char}*'"'
-IntegerLiteral          = {Digit}+
-FloatingPointLiteral    = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
-BooleanLiteral          = 'true' | 'false'
-NullLiteral             = 'null'
+StringLiteral               = '"'{String Char}*'"'
+IntegerLiteral              = {Digit}+
+FloatingPointLiteral        = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
+BooleanLiteral              = 'true' | 'false'
+NullLiteral                 = 'null'
+IndirectCharLiteral         = {Quote}{CharSign}{Quote}
+StandardEscapeCharLiteral   = {Quote}'\'{CharSignEscapeSequence}{Quote}
 
-"Case Sensitive"        = 'True'
+"Case Sensitive"            = 'True'
 
-Comment Start           = '/*'
-Comment End             = '*/'
-Comment Line            = '//'
+Comment Start               = '/*'
+Comment End                 = '*/'
+Comment Line                = '//'
 
-<Literal>               ::= StringLiteral
-                         |  IntegerLiteral
-                         |  FloatingPointLiteral
-                         |  BooleanLiteral
-                         |  NullLiteral
+<Literal>                   ::= StringLiteral
+                             |  IntegerLiteral
+                             |  FloatingPointLiteral
+                             |  BooleanLiteral
+                             |  NullLiteral
+
+<CharacterLiteral>          ::= IndirectCharLiteral
+                             |  StandardEscapeCharLiteral
