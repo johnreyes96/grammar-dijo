@@ -62,3 +62,6 @@ Comment Line                            = '//'
 
 <NumericType>                           ::= <IntegralType>
                                          |  <FloatingPointType>
+
+<PrimitiveType>                         ::= 'boolean'
+                                         | <NumericType>
