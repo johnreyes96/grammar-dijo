@@ -6,12 +6,15 @@
 {Point}                                 = '.'
 {Quote}                                 = ['']
 {String Char}                           = {Printable} - ["]
+{IdLetter}                              = {Letter} + [_$]
+{IdAlphaNumeric}                        = {Alphanumeric} + [_$]
 {FloatTypeSuffix}                       = [dfDF]
 {NoZeroDigit}                           = [123456789]
 {LongTypeSuffix}                        = [lL]
 {CharSignEscapeSequence}                = [bfnrt\"] + {Quote}
 {CharSign}                              = {String Char} - [\]
 
+Identifier                              = {IdLetter}{IdAlphaNumeric}*
 StringLiteral                           = '"'{String Char}*'"'
 IntegerLiteral                          = {Digit}+
 FloatingPointLiteral                    = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
@@ -65,3 +68,10 @@ Comment Line                            = '//'
 
 <PrimitiveType>                         ::= 'boolean'
                                          | <NumericType>
+
+<SimpleName>                            ::= Identifier
+
+<QualifiedName>                         ::= <Name> '.' Identifier
+
+<Name>                                  ::= <SimpleName>
+                                         |  <QualifiedName>
