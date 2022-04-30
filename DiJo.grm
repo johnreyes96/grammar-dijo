@@ -39,3 +39,5 @@ Comment Line                            = '//'
 
 <DecimalIntegerLiteral>                 ::= StartWithZeroDecimalIntegerLiteral
                                          |  StartWithNoZeroDecimalIntegerLiteral
+
+<FloatPointLiteral>                     ::= FloatingPointLiteral
