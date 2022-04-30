@@ -3,32 +3,39 @@
 "Author"  = 'Diana Samboni & John Reyes'
 "About"   = 'This is DiJo nonunicode grammar'
 
-{Point}                     = '.'
-{Quote}                     = ['']
-{String Char}               = {Printable} - ["]
-{FloatTypeSuffix}           = [dfDF]
-{CharSignEscapeSequence}    = [bfnrt\"] + {Quote}
-{CharSign}                  = {String Char} - [\]
+{Point}                                 = '.'
+{Quote}                                 = ['']
+{String Char}                           = {Printable} - ["]
+{FloatTypeSuffix}                       = [dfDF]
+{NoZeroDigit}                           = [123456789]
+{LongTypeSuffix}                        = [lL]
+{CharSignEscapeSequence}                = [bfnrt\"] + {Quote}
+{CharSign}                              = {String Char} - [\]
 
-StringLiteral               = '"'{String Char}*'"'
-IntegerLiteral              = {Digit}+
-FloatingPointLiteral        = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
-BooleanLiteral              = 'true' | 'false'
-NullLiteral                 = 'null'
-IndirectCharLiteral         = {Quote}{CharSign}{Quote}
-StandardEscapeCharLiteral   = {Quote}'\'{CharSignEscapeSequence}{Quote}
+StringLiteral                           = '"'{String Char}*'"'
+IntegerLiteral                          = {Digit}+
+FloatingPointLiteral                    = {Digit}+{Point}{Digit}+{FloatTypeSuffix}? | {Digit}+{FloatTypeSuffix} | {Point}{Digit}+{FloatTypeSuffix}?
+BooleanLiteral                          = 'true' | 'false'
+NullLiteral                             = 'null'
+IndirectCharLiteral                     = {Quote}{CharSign}{Quote}
+StandardEscapeCharLiteral               = {Quote}'\'{CharSignEscapeSequence}{Quote}
+StartWithZeroDecimalIntegerLiteral      = '0'{LongTypeSuffix}?
+StartWithNoZeroDecimalIntegerLiteral    = {NoZeroDigit}{Digit}*{LongTypeSuffix}?
 
-"Case Sensitive"            = 'True'
+"Case Sensitive"                        = 'True'
 
-Comment Start               = '/*'
-Comment End                 = '*/'
-Comment Line                = '//'
+Comment Start                           = '/*'
+Comment End                             = '*/'
+Comment Line                            = '//'
 
-<Literal>                   ::= StringLiteral
-                             |  IntegerLiteral
-                             |  FloatingPointLiteral
-                             |  BooleanLiteral
-                             |  NullLiteral
+<Literal>                               ::= StringLiteral
+                                         |  IntegerLiteral
+                                         |  FloatingPointLiteral
+                                         |  BooleanLiteral
+                                         |  NullLiteral
 
-<CharacterLiteral>          ::= IndirectCharLiteral
-                             |  StandardEscapeCharLiteral
+<CharacterLiteral>                      ::= IndirectCharLiteral
+                                         |  StandardEscapeCharLiteral
+
+<DecimalIntegerLiteral>                 ::= StartWithZeroDecimalIntegerLiteral
+                                         |  StartWithNoZeroDecimalIntegerLiteral
