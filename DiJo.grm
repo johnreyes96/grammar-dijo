@@ -81,3 +81,7 @@ Comment Line                            = '//'
 <ClassType>                             ::= <ClassOrInterfaceType>
 
 <InterfaceType>                         ::= <ClassOrInterfaceType>
+
+<ArrayType>                             ::= <PrimitiveType>'[' ']'
+                                         |  <Name>'[' ']'
+                                         |  <ArrayType>'[' ']'
