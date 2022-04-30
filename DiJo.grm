@@ -40,6 +40,13 @@ Comment Line                            = '//'
 <DecimalIntegerLiteral>                 ::= StartWithZeroDecimalIntegerLiteral
                                          |  StartWithNoZeroDecimalIntegerLiteral
 
+<IntegerLiteral>                        ::= <DecimalIntegerLiteral>
+
 <FloatPointLiteral>                     ::= FloatingPointLiteral
 
-<IntegerLiteral>                        ::= <DecimalIntegerLiteral>
+<Literal>                               ::= StringLiteral
+                                         |  BooleanLiteral
+                                         |  NullLiteral
+                                         |  <CharacterLiteral>
+                                         |  <IntegerLiteral>
+                                         |  <FloatPointLiteral>
