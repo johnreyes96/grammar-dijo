@@ -71,7 +71,7 @@ Comment Line                            = '//'
 
 <SimpleName>                            ::= Identifier
 
-<QualifiedName>                         ::= <Name> '.' Identifier
+<QualifiedName>                         ::= <Name>'/'Identifier
 
 <Name>                                  ::= <SimpleName>
                                          |  <QualifiedName>
@@ -91,3 +91,12 @@ Comment Line                            = '//'
 
 <Type>                                  ::= <PrimitiveType>
                                          |  <ReferenceType>
+
+<PackageDeclaration>                    ::= {Quote}'package:'<Name>{Quote}
+                                         |  {Quote}<SimpleName>':'<Name>{Quote}
+                                         |  <PackageDeclaration> 'as' <SimpleName>
+
+<ImportDeclaration>                     ::= 'import' <PackageDeclaration>';'
+
+<CompilationUnit>                       ::= <ImportDeclaration>
+                                         |  
