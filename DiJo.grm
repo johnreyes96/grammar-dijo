@@ -113,3 +113,8 @@ Comment Line                            = '//'
                                          |  <Modifiers> <Modifier>
 
 <Super>                                 ::= 'extends' <ClassType>
+
+<InterfaceTypeList>                     ::= <InterfaceType>
+                                         | <InterfaceTypeList> ',' <InterfaceType>
+
+<Interfaces>                            ::= 'implements' <InterfaceTypeList>
