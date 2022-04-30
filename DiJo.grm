@@ -111,3 +111,5 @@ Comment Line                            = '//'
 
 <Modifiers>                             ::= <Modifier>
                                          |  <Modifiers> <Modifier>
+
+<Super>                                 ::= 'extends' <ClassType>
