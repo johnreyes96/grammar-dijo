@@ -162,6 +162,7 @@ Comment Line                            = '//'
 <ThrowStatement>                        ::= 'throw' <Expression> ';'
 
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <DoStatement>
                                          |  <BreakStatement>
                                          |  <ContinueStatement>
                                          |  <ReturnStatement>
@@ -198,6 +199,8 @@ Comment Line                            = '//'
 <WhileStatement>                        ::= 'while' '(' <Expression> ')' <Statement>
 
 <WhileStatementNoShortIf>               ::= 'while' '(' <Expression> ')' <StatementNoShortIf>
+
+<DoStatement>                           ::= 'do' <Statement> 'while' '(' <Expression> ')' ';'
 
 <Statement>                             ::= <StatementWithoutTrailingSubstatement>
                                          |  <LabeledStatement>
