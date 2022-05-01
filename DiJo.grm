@@ -152,7 +152,10 @@ Comment Line                            = '//'
 
 <ThrowStatement>                        ::= 'throw' <Expression> ';'
 
+<SynchronizedStatement>                 ::= 'async' '(' <Expression> ')' <Block>
+
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <SynchronizedStatement>
                                          |  <ThrowStatement>
                                          |  <TryStatement>
 
