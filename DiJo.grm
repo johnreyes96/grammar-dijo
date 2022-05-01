@@ -120,16 +120,29 @@ Comment Line                            = '//'
 
 <Interfaces>                            ::= 'implements' <InterfaceTypeList>
 
-<PostfixExpression>                     ::= <Name>
+<DimExpr>                               ::= '[' <Expression> ']'
+
+<DimExprs>                              ::= <DimExpr>
+                                         |  <DimExprs> <DimExpr>
+
+<Dims>                                  ::= '[' ']'
+                                         | <Dims> '[' ']'
+
+<ArrayCreationExpression>               ::= 'new' <PrimitiveType> <DimExprs> <Dims>
+                                         |  'new' <PrimitiveType> <DimExprs>
+                                         |  'new' <ClassOrInterfaceType> <DimExprs> <Dims>
+                                         |  'new' <ClassOrInterfaceType> <DimExprs>
+
+<Primary>                               ::= <ArrayCreationExpression>
+
+<PostfixExpression>                     ::= <Primary>
+							             |  <Name>
                                          |  <PostIncrementExpression>
                                          |  <PostDecrementExpression>
 
 <PostIncrementExpression>               ::= <PostfixExpression> '++'
 
 <PostDecrementExpression>               ::= <PostfixExpression> '--'
-
-<Dims>                                  ::= '[' ']'
-                                         | <Dims> '[' ']'
 
 <CastExpression>                        ::= '(' <PrimitiveType> <Dims> ')' <UnaryExpression>
                                          |  '(' <PrimitiveType> ')' <UnaryExpression>
