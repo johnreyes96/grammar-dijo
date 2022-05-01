@@ -120,6 +120,33 @@ Comment Line                            = '//'
 
 <Interfaces>                            ::= 'implements' <InterfaceTypeList>
 
+<ArgumentList>                          ::= <Expression>
+                                         |  <ArgumentList> ',' <Expression>
+
+<ClassInstanceCreationExpression>       ::= 'new' <ClassType> '(' <ArgumentList> ')'
+                                         |  'new' <ClassType> '(' ')'
+
+<FieldAccess>                           ::= <Primary> '.' Identifier
+                                         |  'super' '.' Identifier
+
+<MethodInvocation>                      ::= <Name> '(' <ArgumentList> ')'
+                                         |  <Name> '(' ')'
+                                         |  <Primary> '.' Identifier '(' <ArgumentList> ')'
+                                         |  <Primary> '.' Identifier '(' ')'
+                                         |  'super' '.' Identifier '(' <ArgumentList> ')'
+                                         |  'super' '.' Identifier '(' ')'
+
+<ArrayAccess>                           ::= <Name> '[' <Expression> ']'
+                                         |  <PrimaryNoNewArray> '[' <Expression> ']'
+
+<PrimaryNoNewArray>                     ::= <Literal>
+                                         |  'this'
+                                         |  '(' <Expression> ')'
+                                         |  <ClassInstanceCreationExpression>
+                                         |  <FieldAccess>
+                                         |  <MethodInvocation>
+                                         |  <ArrayAccess>
+
 <DimExpr>                               ::= '[' <Expression> ']'
 
 <DimExprs>                              ::= <DimExpr>
@@ -133,7 +160,8 @@ Comment Line                            = '//'
                                          |  'new' <ClassOrInterfaceType> <DimExprs> <Dims>
                                          |  'new' <ClassOrInterfaceType> <DimExprs>
 
-<Primary>                               ::= <ArrayCreationExpression>
+<Primary>                               ::= <PrimaryNoNewArray>
+                                         |  <ArrayCreationExpression>
 
 <PostfixExpression>                     ::= <Primary>
 							             |  <Name>
