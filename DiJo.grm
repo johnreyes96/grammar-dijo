@@ -120,14 +120,32 @@ Comment Line                            = '//'
 
 <Interfaces>                            ::= 'implements' <InterfaceTypeList>
 
-<PreIncrementExpression>                ::= '++' <UnaryExpression>
+<PostfixExpression>                     ::= <Name>
+                                         |  <PostIncrementExpression>
+                                         |  <PostDecrementExpression>
 
-<PreDecrementExpression>                ::= '--' <UnaryExpression>
+<PostIncrementExpression>               ::= <PostfixExpression> '++'
+
+<PostDecrementExpression>               ::= <PostfixExpression> '--'
+
+<Dims>                                  ::= '[' ']'
+                                         | <Dims> '[' ']'
+
+<CastExpression>                        ::= '(' <PrimitiveType> <Dims> ')' <UnaryExpression>
+                                         |  '(' <PrimitiveType> ')' <UnaryExpression>
+                                         |  '(' <Expression> ')' <UnaryExpressionNotPlusMinus>
+                                         |  '(' <Name> <Dims> ')' <UnaryExpressionNotPlusMinus>
+
+<UnaryExpressionNotPlusMinus>           := <PostfixExpression>
+                                         |  '~' <UnaryExpression>
+                                         |  '!' <UnaryExpression>
+                                         |  <CastExpression>
 
 <UnaryExpression>                       ::= '+' <UnaryExpression>
                                          |  '-' <UnaryExpression>
                                          |  <PreIncrementExpression>
                                          |  <PreDecrementExpression>
+			                             |  <UnaryExpressionNotPlusMinus>
 
 <MultiplicativeExpression>              ::= <UnaryExpression>
                                          |  <MultiplicativeExpression> '*' <UnaryExpression>
