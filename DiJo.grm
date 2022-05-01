@@ -152,6 +152,8 @@ Comment Line                            = '//'
 
 <LabeledStatement>                      ::= Identifier ':' <Statement>
 
+<IfThenStatement>                       ::= 'if' '(' <Expression> ')' <Statement>
+
 <StatementExpressionList>               ::= <StatementExpression>
                                          |  <StatementExpressionList> ',' <StatementExpression>
 
@@ -169,6 +171,7 @@ Comment Line                            = '//'
 <WhileStatement>                        ::= 'while' '(' <Expression> ')' <Statement>
 
 <Statement>                             ::= <LabeledStatement>
+                                         |  <IfThenStatement>
                                          |  <ForStatement>
                                          |  <WhileStatement>
 
