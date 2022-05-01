@@ -152,7 +152,13 @@ Comment Line                            = '//'
 
 <LabeledStatement>                      ::= Identifier ':' <Statement>
 
+<LabeledStatementNoShortIf>             ::= Identifier ':' <StatementNoShortIf>
+
 <IfThenStatement>                       ::= 'if' '(' <Expression> ')' <Statement>
+
+<IfThenElseStatement>                   ::= 'if' '(' <Expression> ')' <StatementNoShortIf> 'else' <Statement>
+
+<IfThenElseStatementNoShortIf>          ::= 'if' '(' <Expression> ')' <StatementNoShortIf> 'else' <StatementNoShortIf>
 
 <StatementExpressionList>               ::= <StatementExpression>
                                          |  <StatementExpressionList> ',' <StatementExpression>
@@ -166,14 +172,24 @@ Comment Line                            = '//'
 
 <ForUpdate>                             ::= <StatementExpressionList>
 
-<ForStatement>                          ::= 'for' '(' <ForInit> <Expression> <ForUpdate> ')' <Statement>
+<ForStatement>                          ::= 'for' '(' <ForInit> ',' <Expression> ',' <ForUpdate> ')' <Statement>
+
+<ForStatementNoShortIf>                 ::= 'for' '(' <ForInit> ',' <Expression> ',' <ForUpdate> ')' <StatementNoShortIf>
 
 <WhileStatement>                        ::= 'while' '(' <Expression> ')' <Statement>
 
+<WhileStatementNoShortIf>               ::= 'while' '(' <Expression> ')' <StatementNoShortIf>
+
 <Statement>                             ::= <LabeledStatement>
                                          |  <IfThenStatement>
+                                         |  <IfThenElseStatement>
                                          |  <ForStatement>
                                          |  <WhileStatement>
+
+<StatementNoShortIf>                    ::= <LabeledStatementNoShortIf>
+                                         |  <IfThenElseStatementNoShortIf>
+                                         |  <ForStatementNoShortIf>
+                                         |  <WhileStatementNoShortIf>
 
 <BlockStatement>                        ::= <LocalVariableDeclarationStatement>
                                          |  <Statement>
