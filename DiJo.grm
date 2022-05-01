@@ -470,3 +470,10 @@ Comment Line                            = '//'
                                          |  <Modifiers> 'interface' Identifier <InterfaceBody>
                                          |  'interface' Identifier <ExtendsInterfaces> <InterfaceBody>
                                          |  'interface' Identifier <InterfaceBody>
+
+<TypeDeclarations>                      ::= <TypeDeclaration>
+                                         |  <TypeDeclarations> <TypeDeclaration>
+
+<TypeDeclaration>                       ::= <ClassDeclaration>
+                                         |  <InterfaceDeclaration>
+                                         |  ';'
