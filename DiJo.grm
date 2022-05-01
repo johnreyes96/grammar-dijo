@@ -150,6 +150,9 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <TryStatement>
+
 <LabeledStatement>                      ::= Identifier ':' <Statement>
 
 <LabeledStatementNoShortIf>             ::= Identifier ':' <StatementNoShortIf>
@@ -180,13 +183,15 @@ Comment Line                            = '//'
 
 <WhileStatementNoShortIf>               ::= 'while' '(' <Expression> ')' <StatementNoShortIf>
 
-<Statement>                             ::= <LabeledStatement>
+<Statement>                             ::= <StatementWithoutTrailingSubstatement>
+                                         |  <LabeledStatement>
                                          |  <IfThenStatement>
                                          |  <IfThenElseStatement>
                                          |  <ForStatement>
                                          |  <WhileStatement>
 
-<StatementNoShortIf>                    ::= <LabeledStatementNoShortIf>
+<StatementNoShortIf>                    ::= <StatementWithoutTrailingSubstatement>
+                                         |  <LabeledStatementNoShortIf>
                                          |  <IfThenElseStatementNoShortIf>
                                          |  <ForStatementNoShortIf>
                                          |  <WhileStatementNoShortIf>
