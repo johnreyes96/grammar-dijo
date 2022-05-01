@@ -220,6 +220,19 @@ Comment Line                            = '//'
 <AssignmentExpression>                  ::= <ConditionalExpression>
                                          |  <Assignment>
 
+<Assignment>                            ::= <LeftHandSide> <AssignmentOperator> <AssignmentExpression>
+
+<LeftHandSide>                          ::= <Name>
+                                         |  <FieldAccess>
+                                         |  <ArrayAccess>
+
+<AssignmentOperator>                    ::= '='
+                                         |  '*='
+                                         |  '/='
+                                         |  '%='
+                                         |  '+='
+                                         |  '-='
+
 <Expression>                            ::= <AssignmentExpression>
 
 <ConstantExpression>                    ::= <Expression>
