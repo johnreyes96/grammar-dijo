@@ -150,6 +150,24 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<SwitchBlockStatementGroup>             ::= <SwitchLabels> <BlockStatements>
+
+<SwitchBlockStatementGroups>            ::= <SwitchBlockStatementGroup>
+                                         |  <SwitchBlockStatementGroups> <SwitchBlockStatementGroup>
+
+<SwitchLabel>                           ::= 'case' <Expression> ':'
+                                         |  'default' ':'
+
+<SwitchLabels>                          ::= <SwitchLabel>
+                                         |  <SwitchLabels> <SwitchLabel>
+
+<SwitchBlock>                           ::= '{' <SwitchBlockStatementGroups> <SwitchLabels> '}'
+                                         |  '{' <SwitchBlockStatementGroups> '}'
+                                         |  '{' <SwitchLabels> '}'
+                                         |  '{' '}'
+
+<SwitchStatement>                       ::= 'switch' '(' <Expression> ')' <SwitchBlock>
+
 <BreakStatement>                        ::= 'break' ';'
 
 <ContinueStatement>                     ::= 'continue' ';'
@@ -162,6 +180,7 @@ Comment Line                            = '//'
 <ThrowStatement>                        ::= 'throw' <Expression> ';'
 
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <SwitchStatement>
                                          |  <DoStatement>
                                          |  <BreakStatement>
                                          |  <ContinueStatement>
@@ -349,5 +368,3 @@ Comment Line                            = '//'
                                          |  '-='
 
 <Expression>                            ::= <AssignmentExpression>
-
-<ConstantExpression>                    ::= <Expression>
