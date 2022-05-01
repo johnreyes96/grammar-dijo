@@ -314,6 +314,10 @@ Comment Line                            = '//'
                                          |  '(' <Expression> ')' <UnaryExpressionNotPlusMinus>
                                          |  '(' <Name> <Dims> ')' <UnaryExpressionNotPlusMinus>
 
+<PreIncrementExpression>                ::= '++' <UnaryExpression>
+
+<PreDecrementExpression>                ::= '--' <UnaryExpression>
+
 <UnaryExpressionNotPlusMinus>           := <PostfixExpression>
                                          |  '~' <UnaryExpression>
                                          |  '!' <UnaryExpression>
