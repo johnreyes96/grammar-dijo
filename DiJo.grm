@@ -150,6 +150,8 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<ContinueStatement>                     ::= 'continue' ';'
+
 <ReturnStatement>                       ::= 'return' <Expression> ';'
                                          |  'return' ';'
 
@@ -158,6 +160,7 @@ Comment Line                            = '//'
 <ThrowStatement>                        ::= 'throw' <Expression> ';'
 
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <ContinueStatement>
                                          |  <ReturnStatement>
                                          |  <SynchronizedStatement>
                                          |  <ThrowStatement>
