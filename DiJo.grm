@@ -150,11 +150,15 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
-<ThrowStatement>                        ::= 'throw' <Expression> ';'
+<ReturnStatement>                       ::= 'return' <Expression> ';'
+                                         |  'return' ';'
 
 <SynchronizedStatement>                 ::= 'async' '(' <Expression> ')' <Block>
 
+<ThrowStatement>                        ::= 'throw' <Expression> ';'
+
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <ReturnStatement>
                                          |  <SynchronizedStatement>
                                          |  <ThrowStatement>
                                          |  <TryStatement>
