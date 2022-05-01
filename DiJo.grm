@@ -451,3 +451,22 @@ Comment Line                            = '//'
                                          |  'class' Identifier <Super> <ClassBody>
                                          |  'class' Identifier <Interfaces> <ClassBody>
                                          |  'class' Identifier <ClassBody>
+
+<ExtendsInterfaces>                     ::= 'extends' <InterfaceType>
+                                         |  <ExtendsInterfaces> ',' <InterfaceType>
+
+<ConstantDeclaration>                   ::= <FieldDeclaration>
+
+<InterfaceMemberDeclaration>            ::= <ConstantDeclaration>
+                                         |  <AbstractMethodDeclaration>
+
+<InterfaceMemberDeclarations>           ::= <InterfaceMemberDeclaration>
+                                         |  <InterfaceMemberDeclarations> <InterfaceMemberDeclaration>
+
+<InterfaceBody>                         ::= '{' <InterfaceMemberDeclarations> '}'
+                                         |  '{' '}'
+
+<InterfaceDeclaration>                  ::= <Modifiers> 'interface' Identifier <ExtendsInterfaces> <InterfaceBody>
+                                         |  <Modifiers> 'interface' Identifier <InterfaceBody>
+                                         |  'interface' Identifier <ExtendsInterfaces> <InterfaceBody>
+                                         |  'interface' Identifier <InterfaceBody>
