@@ -125,7 +125,34 @@ Comment Line                            = '//'
 
 <FormalParameter>                       ::= <Type> <VariableDeclaratorId>
 
-<Block>                                 ::= '{' '}'
+<VariableInitializers>                  ::= <VariableInitializer>
+                                         | <VariableInitializers> ',' <VariableInitializer>
+
+<ArrayInitializer>                      ::= '{' <VariableInitializers> ',' '}'
+                                         |  '{' <VariableInitializers> '}'
+                                         |  '{' ',' '}'
+                                         |  '{' '}'
+
+<VariableInitializer>                   ::= <Expression>
+                                         |  <ArrayInitializer>
+
+<VariableDeclarator>                    ::= <VariableDeclaratorId>
+                                         |  <VariableDeclaratorId> '=' <VariableInitializer>
+
+<VariableDeclarators>                   ::= <VariableDeclarator>
+                                         |  <VariableDeclarators> ',' <VariableDeclarator>
+
+<LocalVariableDeclaration>              ::= <Type> <VariableDeclarators>
+
+<LocalVariableDeclarationStatement>     ::= <LocalVariableDeclaration> ';'
+
+<BlockStatement>                        ::= <LocalVariableDeclarationStatement>
+
+<BlockStatements>                       ::= <BlockStatement>
+                                         |  <BlockStatements> <BlockStatement>
+
+<Block>                                 ::= '{' <BlockStatements> '}'
+                                         |  '{' '}'
 
 <Catches>                               ::= <CatchClause>
                                          |  <Catches> <CatchClause>
