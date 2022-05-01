@@ -136,17 +136,38 @@ Comment Line                            = '//'
 <VariableInitializer>                   ::= <Expression>
                                          |  <ArrayInitializer>
 
+<StatementExpression>                   ::= <Assignment>
+                                         |  <PreIncrementExpression>
+                                         |  <PreDecrementExpression>
+                                         |  <PostIncrementExpression>
+                                         |  <PostDecrementExpression>
+                                         |  <MethodInvocation>
+                                         |  <ClassInstanceCreationExpression>
+
 <VariableDeclarator>                    ::= <VariableDeclaratorId>
                                          |  <VariableDeclaratorId> '=' <VariableInitializer>
 
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<StatementExpressionList>               ::= <StatementExpression>
+                                         |  <StatementExpressionList> ',' <StatementExpression>
+
 <LocalVariableDeclaration>              ::= <Type> <VariableDeclarators>
 
 <LocalVariableDeclarationStatement>     ::= <LocalVariableDeclaration> ';'
 
+<ForInit>                               ::= <StatementExpressionList>
+                                         | <LocalVariableDeclaration>
+
+<ForUpdate>                             ::= <StatementExpressionList>
+
+<ForStatement>                          ::= 'for' '(' <ForInit> <Expression> <ForUpdate> ')' <Statement>
+
+<Statement>                             ::= <ForStatement>
+
 <BlockStatement>                        ::= <LocalVariableDeclarationStatement>
+                                         |  <Statement>
 
 <BlockStatements>                       ::= <BlockStatement>
                                          |  <BlockStatements> <BlockStatement>
