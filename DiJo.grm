@@ -120,6 +120,24 @@ Comment Line                            = '//'
 
 <Interfaces>                            ::= 'implements' <InterfaceTypeList>
 
+<VariableDeclaratorId>                  ::= Identifier
+                                         |  <VariableDeclaratorId> '[' ']'
+
+<FormalParameter>                       ::= <Type> <VariableDeclaratorId>
+
+<Block>                                 ::= '{' '}'
+
+<Catches>                               ::= <CatchClause>
+                                         |  <Catches> <CatchClause>
+
+<CatchClause>                           ::= 'catch' '(' <FormalParameter> ')' <Block>
+
+<Finally>                               ::= 'finally' <Block>
+
+<TryStatement>                          ::= 'try' <Block> <Catches>
+                                         |  'try' <Block> <Catches> <Finally>
+                                         |  'try' <Block> <Finally>
+
 <ArgumentList>                          ::= <Expression>
                                          |  <ArgumentList> ',' <Expression>
 
