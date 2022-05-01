@@ -119,3 +119,48 @@ Comment Line                            = '//'
                                          | <InterfaceTypeList> ',' <InterfaceType>
 
 <Interfaces>                            ::= 'implements' <InterfaceTypeList>
+
+<PreIncrementExpression>                ::= '++' <UnaryExpression>
+
+<PreDecrementExpression>                ::= '--' <UnaryExpression>
+
+<UnaryExpression>                       ::= '+' <UnaryExpression>
+                                         |  '-' <UnaryExpression>
+                                         |  <PreIncrementExpression>
+                                         |  <PreDecrementExpression>
+
+<MultiplicativeExpression>              ::= <UnaryExpression>
+                                         |  <MultiplicativeExpression> '*' <UnaryExpression>
+                                         |  <MultiplicativeExpression> '/' <UnaryExpression>
+                                         |  <MultiplicativeExpression> '%' <UnaryExpression>
+
+<AdditiveExpression>                    ::= <MultiplicativeExpression>
+                                         |  <AdditiveExpression> '+' <MultiplicativeExpression>
+                                         |  <AdditiveExpression> '-' <MultiplicativeExpression>
+
+<RelationalExpression>                  ::= <AdditiveExpression>
+                                         |  <RelationalExpression> '<' <AdditiveExpression>
+                                         |  <RelationalExpression> '>' <AdditiveExpression>
+                                         |  <RelationalExpression> '<=' <AdditiveExpression>
+                                         |  <RelationalExpression> '>=' <AdditiveExpression>
+                                         |  <RelationalExpression> 'instanceof' <ReferenceType>
+
+<EqualityExpression>                    ::= <RelationalExpression>
+                                         |  <EqualityExpression> '==' <RelationalExpression>
+                                         |  <EqualityExpression> '!=' <RelationalExpression>
+
+<ConditionalAndExpression>              ::= <EqualityExpression>
+                                         |  <ConditionalAndExpression> '&&' <EqualityExpression>
+
+<ConditionalOrExpression>               ::= <ConditionalAndExpression>
+                                         |  <ConditionalOrExpression> '||' <ConditionalAndExpression>
+
+<ConditionalExpression>                 ::= <ConditionalOrExpression>
+                                         |  <ConditionalOrExpression> '?' <Expression> ':' <ConditionalExpression>
+
+<AssignmentExpression>                  ::= <ConditionalExpression>
+                                         |  <Assignment>
+
+<Expression>                            ::= <AssignmentExpression>
+
+<ConstantExpression>                    ::= <Expression>
