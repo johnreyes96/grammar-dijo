@@ -378,3 +378,26 @@ Comment Line                            = '//'
                                          |  '-='
 
 <Expression>                            ::= <AssignmentExpression>
+
+<FormalParameterList>                   ::= <FormalParameter>
+                                         |  <FormalParameterList> ',' <FormalParameter>
+
+<MethodDeclarator>                      ::= Identifier '(' <FormalParameterList> ')'
+                                         |  Identifier '(' ')'
+                                         |  <MethodDeclarator> '[' ']'
+
+<ClassTypeList>                         ::= <ClassType>
+                                         |  <ClassTypeList> ',' <ClassType>
+
+<Throws>                                ::= 'throws' <ClassTypeList>
+
+<MethodHeader>                          ::= <Modifiers> <Type> <MethodDeclarator> <Throws>
+                                         |  <Modifiers> <Type> <MethodDeclarator>
+                                         |  <Type> <MethodDeclarator> <Throws>
+                                         |  <Type> <MethodDeclarator>
+                                         |  <Modifiers> 'void' <MethodDeclarator> <Throws>
+                                         |  <Modifiers> 'void' <MethodDeclarator>
+                                         |  'void' <MethodDeclarator> <Throws>
+                                         |  'void' <MethodDeclarator>
+
+<AbstractMethodDeclaration>             ::= <MethodHeader> ';'
