@@ -150,7 +150,10 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<ThrowStatement>                        ::= 'throw' <Expression> ';'
+
 <StatementWithoutTrailingSubstatement>  ::= <Block>
+                                         |  <ThrowStatement>
                                          |  <TryStatement>
 
 <LabeledStatement>                      ::= Identifier ':' <Statement>
