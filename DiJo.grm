@@ -400,4 +400,54 @@ Comment Line                            = '//'
                                          |  'void' <MethodDeclarator> <Throws>
                                          |  'void' <MethodDeclarator>
 
+<MethodBody>                            ::= <Block>
+                                         |  ';'
+
 <AbstractMethodDeclaration>             ::= <MethodHeader> ';'
+
+<FieldDeclaration>                      ::= <Modifiers> <Type> <VariableDeclarators> ';'
+                                         |  <Type> <VariableDeclarators> ';'
+
+<MethodDeclaration>                     ::= <MethodHeader> <MethodBody>
+
+<ClassMemberDeclaration>                ::= <FieldDeclaration>
+                                         |  <MethodDeclaration>
+
+<StaticInitializer>                     ::= 'static' <Block>
+
+<ConstructorDeclarator>                 ::= <SimpleName> '(' <FormalParameterList> ')'
+                                         |  <SimpleName> '(' ')'
+
+<ExplicitConstructorInvocation>         ::= 'this' '(' <ArgumentList> ')' ';'
+                                         |  'this' '(' ')' ';'
+                                         |  'super' '(' <ArgumentList> ')' ';'
+                                         |  'super' '(' ')' ';'
+
+<ConstructorBody>                       ::= '{' <ExplicitConstructorInvocation> <BlockStatements> '}'
+                                         |  '{' <ExplicitConstructorInvocation> '}'
+                                         |  '{' <BlockStatements> '}'
+                                         |  '{' '}'
+
+<ConstructorDeclaration>                ::= <Modifiers> <ConstructorDeclarator> <Throws> <ConstructorBody>
+                                         |  <Modifiers> <ConstructorDeclarator> <ConstructorBody>
+                                         |  <ConstructorDeclarator> <Throws> <ConstructorBody>
+                                         |  <ConstructorDeclarator> <ConstructorBody>
+
+<ClassBodyDeclaration>                  ::= <ClassMemberDeclaration>
+                                         |  <StaticInitializer>
+                                         |  <ConstructorDeclaration>
+
+<ClassBodyDeclarations>                 ::= <ClassBodyDeclaration>
+                                         |  <ClassBodyDeclarations> <ClassBodyDeclaration>
+
+<ClassBody>                             ::= '{' <ClassBodyDeclarations> '}'
+                                         |  '{' '}'
+
+<ClassDeclaration>                      ::= <Modifiers> 'class' Identifier <Super> <Interfaces> <ClassBody>
+                                         |  <Modifiers> 'class' Identifier <Super>  <ClassBody>
+                                         |  <Modifiers> 'class' Identifier <Interfaces> <ClassBody>
+                                         |  <Modifiers> 'class' Identifier <ClassBody>
+                                         |  'class' Identifier <Super> <Interfaces> <ClassBody>
+                                         |  'class' Identifier <Super> <ClassBody>
+                                         |  'class' Identifier <Interfaces> <ClassBody>
+                                         |  'class' Identifier <ClassBody>
