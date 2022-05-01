@@ -150,6 +150,8 @@ Comment Line                            = '//'
 <VariableDeclarators>                   ::= <VariableDeclarator>
                                          |  <VariableDeclarators> ',' <VariableDeclarator>
 
+<LabeledStatement>                      ::= Identifier ':' <Statement>
+
 <StatementExpressionList>               ::= <StatementExpression>
                                          |  <StatementExpressionList> ',' <StatementExpression>
 
@@ -166,7 +168,8 @@ Comment Line                            = '//'
 
 <WhileStatement>                        ::= 'while' '(' <Expression> ')' <Statement>
 
-<Statement>                             ::= <ForStatement>
+<Statement>                             ::= <LabeledStatement>
+                                         |  <ForStatement>
                                          |  <WhileStatement>
 
 <BlockStatement>                        ::= <LocalVariableDeclarationStatement>
