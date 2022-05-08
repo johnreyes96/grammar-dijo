@@ -1,2 +1,2 @@
-# Compiler DiJo
-Compiler of a fictitious language (DiJo).
+# Grammar DiJo
+Grammar of a fictitious language (DiJo).
